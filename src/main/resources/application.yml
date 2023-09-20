@@ -1,9 +1,18 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:test
-    username: admin
-    password: pass
-    driverClassName: org.h2.Driver
-  h2:
-    console:
-      enabled: true
+    url: jdbc:postgresql://localhost:5432/binksake
+    username: postgres
+    password: password
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+app:
+  jwt:
+    secret: GaeuRaXZsiTHMXFTvA0INIVh7oaFxQBifdBg4rAs0fG
