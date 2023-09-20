@@ -1,4 +1,4 @@
-package eng.core.binksake.user;
+package eng.core.binksake.song;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,11 +8,8 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Users {
+public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String email;
-    private String password;
 }
