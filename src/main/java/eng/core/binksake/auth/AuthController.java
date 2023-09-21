@@ -1,30 +1,28 @@
 package eng.core.binksake.auth;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/auth")
 @RequiredArgsConstructor
 public class AuthController {
-
     private final AuthService authService;
 
-    @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody RegisterRequestDto request
-    ) {
-        return ResponseEntity.ok(authService.register(request));
+    @PostMapping("/login")
+    @ResponseStatus(HttpStatus.OK)
+    public JwtTokenDto login(@Valid @RequestBody LoginRequestDto loginRequestDto) {
+        return authService.login(loginRequestDto);
     }
 
-    @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody AuthRequest request
-    ) {
-        return ResponseEntity.ok(authService.authenticate(request));
+    @PostMapping("/refresh-token")
+    @ResponseStatus(HttpStatus.OK)
+    public JwtTokenDto refreshToken(HttpServletRequest request, HttpServletResponse response) {
+        return authService.refreshToken(request, response);
     }
+
 }

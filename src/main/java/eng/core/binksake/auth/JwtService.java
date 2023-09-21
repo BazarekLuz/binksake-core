@@ -1,5 +1,6 @@
 package eng.core.binksake.auth;
 
+import eng.core.binksake.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -23,6 +24,7 @@ public class JwtService {
     private String JWT_SECRET;
 
     private final Duration JWT_EXPIRATION = Duration.ofMinutes(15);
+    private final Duration JWT_REFRESH_EXPIRATION = Duration.ofDays(1);
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
@@ -78,5 +80,9 @@ public class JwtService {
     private Key getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(JWT_SECRET);
         return Keys.hmacShaKeyFor(keyBytes);
+    }
+
+    String generateRefresh(User user) {
+        return buildToken(new HashMap<>(), user, JWT_REFRESH_EXPIRATION);
     }
 }

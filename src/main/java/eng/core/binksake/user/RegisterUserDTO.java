@@ -1,4 +1,4 @@
-package eng.core.binksake.auth;
+package eng.core.binksake.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequestDto {
+public class RegisterUserDTO {
     private String name;
     private String email;
     private String password;
