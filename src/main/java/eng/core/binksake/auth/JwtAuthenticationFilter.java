@@ -1,6 +1,5 @@
 package eng.core.binksake.auth;
 
-import eng.core.binksake.auth.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

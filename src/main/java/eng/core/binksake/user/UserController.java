@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("/{id}")
-    private ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
-        return ResponseEntity.ok(userService.findUserById(id));
-    }
-
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     private void register(@RequestBody RegisterUserDTO registerUserDTO) {
         userService.register(registerUserDTO);
+    }
+
+    @GetMapping("/{id}")
+    private ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.findUserById(id));
     }
 }

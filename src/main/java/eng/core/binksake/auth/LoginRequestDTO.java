@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LoginRequestDto {
+public class LoginRequestDTO {
 
     @NotNull(message = ErrorMessages.EMAIL_IS_REQUIRED)
     private String email;

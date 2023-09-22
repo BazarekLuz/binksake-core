@@ -40,7 +40,7 @@ public class AuthService {
 //                .token(jwtToken)
 //                .build();
 //    }
-    public JwtTokenDto login(LoginRequestDto loginRequestDto) {
+    public JwtTokenDTO login(LoginRequestDTO loginRequestDto) {
         Authentication authentication;
         try {
             authentication = authenticationManager.authenticate(
@@ -55,13 +55,13 @@ public class AuthService {
         String jwtToken = jwtService.generateToken(user);
         String refreshToken = jwtService.generateRefresh(user);
 
-        return JwtTokenDto.builder()
+        return JwtTokenDTO.builder()
                 .token(jwtToken)
                 .refreshToken(refreshToken)
                 .build();
     }
 
-    JwtTokenDto refreshToken(HttpServletRequest request, HttpServletResponse response) {
+    JwtTokenDTO refreshToken(HttpServletRequest request, HttpServletResponse response) {
         String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
 
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
@@ -89,7 +89,7 @@ public class AuthService {
 
         String jwtToken = jwtService.generateToken(user);
 
-        return JwtTokenDto.builder()
+        return JwtTokenDTO.builder()
                 .token(jwtToken)
                 .refreshToken(refreshToken)
                 .build();

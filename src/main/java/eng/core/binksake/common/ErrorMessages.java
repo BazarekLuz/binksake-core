@@ -9,4 +9,5 @@ public class ErrorMessages {
     public static final String PASSWORD_IS_REQUIRED = "Password is required";
     public static final String BAD_CREDENTIALS = "Bad credentials";
     public static final String NOT_AUTHENTICATED = "Not authenticated";
+    public static final String ARTIST_NOT_FOUND = "Artist was not found";
 }

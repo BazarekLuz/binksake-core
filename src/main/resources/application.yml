@@ -7,12 +7,19 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
-    show-sql: true
+#    show-sql: true
     properties:
       hibernate:
         format_sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
 app:
   jwt:
     secret: GaeuRaXZsiTHMXFTvA0INIVh7oaFxQBifdBg4rAs0fG
+  file:
+    music-file:
+      path: 'music-upload'

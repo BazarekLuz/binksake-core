@@ -15,14 +15,13 @@ public class AuthController {
 
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
-    public JwtTokenDto login(@Valid @RequestBody LoginRequestDto loginRequestDto) {
+    public JwtTokenDTO login(@Valid @RequestBody LoginRequestDTO loginRequestDto) {
         return authService.login(loginRequestDto);
     }
 
     @PostMapping("/refresh-token")
     @ResponseStatus(HttpStatus.OK)
-    public JwtTokenDto refreshToken(HttpServletRequest request, HttpServletResponse response) {
+    public JwtTokenDTO refreshToken(HttpServletRequest request, HttpServletResponse response) {
         return authService.refreshToken(request, response);
     }
-
 }
