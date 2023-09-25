@@ -20,14 +20,11 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
     private LocalDate dateCreated;
-
     private String imgUrl;
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
     @JoinColumn(name = "album_id")
     private List<Song> songList = new ArrayList<>();
 }

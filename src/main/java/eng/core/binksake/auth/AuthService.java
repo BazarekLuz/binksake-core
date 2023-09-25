@@ -26,20 +26,6 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-//    public AuthenticationResponse authenticate(AuthRequest request) {
-//        authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken(
-//                        request.getEmail(),
-//                        request.getPassword()
-//                )
-//        );
-//        User user = userRepository.findByEmail(request.getEmail())
-//                .orElseThrow(UserNotFoundException::new);
-//        String jwtToken = jwtService.generateToken(user);
-//        return AuthenticationResponse.builder()
-//                .token(jwtToken)
-//                .build();
-//    }
     public JwtTokenDTO login(LoginRequestDTO loginRequestDto) {
         Authentication authentication;
         try {

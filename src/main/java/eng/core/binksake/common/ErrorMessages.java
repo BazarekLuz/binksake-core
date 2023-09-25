@@ -10,4 +10,5 @@ public class ErrorMessages {
     public static final String BAD_CREDENTIALS = "Bad credentials";
     public static final String NOT_AUTHENTICATED = "Not authenticated";
     public static final String ARTIST_NOT_FOUND = "Artist was not found";
+    public static final String ALBUM_NOT_FOUND = "Album was not found";
 }
