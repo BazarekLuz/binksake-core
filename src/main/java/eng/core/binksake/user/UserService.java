@@ -1,7 +1,8 @@
 package eng.core.binksake.user;
 
 import eng.core.binksake.common.AutoMapper;
-import eng.core.binksake.common.exception.UserAlreadyExistsException;
+import eng.core.binksake.common.exception.EmailAlreadyExistsException;
+import eng.core.binksake.common.exception.NameAlreadyExistsException;
 import eng.core.binksake.common.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,8 +17,12 @@ public class UserService {
 
     void register(RegisterUserDTO registerUserDTO) {
         userRepository.findByEmail(registerUserDTO.getEmail()).ifPresent(user -> {
-            throw new UserAlreadyExistsException();
+            throw new EmailAlreadyExistsException();
         });
+        userRepository.findByName(registerUserDTO.getName()).ifPresent(user -> {
+            throw new NameAlreadyExistsException();
+        });
+
         User user = User.builder()
                 .name(registerUserDTO.getName())
                 .email(registerUserDTO.getEmail())

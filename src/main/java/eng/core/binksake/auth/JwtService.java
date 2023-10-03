@@ -34,13 +34,13 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
-    public String generateToken(UserDetails userDetails) {
-        return buildToken(new HashMap<>(), userDetails, JWT_EXPIRATION);
+    public String generateToken(UserDetails userDetails, Map<String, Object> extraClaims) {
+        return buildToken(userDetails, extraClaims, JWT_EXPIRATION);
     }
 
     public String buildToken(
-            Map<String, Object> extraClaims,
             UserDetails userDetails,
+            Map<String, Object> extraClaims,
             Duration duration
     ) {
         Date expiration = new Date(Instant.now().plus(duration).toEpochMilli());
@@ -83,6 +83,6 @@ public class JwtService {
     }
 
     String generateRefresh(User user) {
-        return buildToken(new HashMap<>(), user, JWT_REFRESH_EXPIRATION);
+        return buildToken(user, new HashMap<>(), JWT_REFRESH_EXPIRATION);
     }
 }

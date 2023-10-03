@@ -10,9 +10,10 @@ public class ExceptionHandler {
     @org.springframework.web.bind.annotation.ExceptionHandler({
             UserNotFoundException.class,
             UserNotAuthenticatedException.class,
-            UserAlreadyExistsException.class,
+            EmailAlreadyExistsException.class,
             ArtistNotFoundException.class,
-            AlbumNotFoundException.class
+            AlbumNotFoundException.class,
+            NameAlreadyExistsException.class
     })
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorMessageDTO handleExceptions(Exception e) {

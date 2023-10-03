@@ -19,6 +19,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -38,7 +42,7 @@ public class AuthService {
         }
         User user = (User) authentication.getPrincipal();
 
-        String jwtToken = jwtService.generateToken(user);
+        String jwtToken = jwtService.generateToken(user ,generateExtraClaims(user));
         String refreshToken = jwtService.generateRefresh(user);
 
         return JwtTokenDTO.builder()
@@ -73,11 +77,24 @@ public class AuthService {
             throw new UserNotAuthenticatedException();
         }
 
-        String jwtToken = jwtService.generateToken(user);
+        String jwtToken = jwtService.generateToken(user, generateExtraClaims(user));
 
         return JwtTokenDTO.builder()
                 .token(jwtToken)
                 .refreshToken(refreshToken)
                 .build();
+    }
+
+    private Map<String, Object> generateExtraClaims(User user) {
+        Map<String, Object> extraClaims = new HashMap<>();
+        extraClaims.put("id", user.getId());
+        extraClaims.put("name", user.getName());
+
+        if (user.getActivationTime() == null) {
+            extraClaims.put("activationTime", null);
+        } else {
+            extraClaims.put("activationTime", user.getActivationTime().toString());
+        }
+        return extraClaims;
     }
 }

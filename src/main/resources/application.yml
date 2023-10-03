@@ -17,10 +17,16 @@ spring:
   sql:
     init:
       mode: always
+  web:
+    resources:
+      static-locations: ./images/
 app:
   jwt:
     secret: GaeuRaXZsiTHMXFTvA0INIVh7oaFxQBifdBg4rAs0fG
   file:
     music-file:
       path: music-upload
+    img:
+      path: images/
+      catalog: images/
   frontUrl: http://localhost:4200/
