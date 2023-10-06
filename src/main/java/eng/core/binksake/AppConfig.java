@@ -13,9 +13,17 @@ public class AppConfig implements WebMvcConfigurer {
     @Value("${app.file.img.catalog}")
     private String imageCatalog;
 
+    @Value("${app.file.audio.path}")
+    private String audioPath;
+
+    @Value("${app.file.audio.catalog}")
+    private String audioCatalog;
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(imagePath + "**")
                 .addResourceLocations("file:" + imageCatalog);
+        registry.addResourceHandler(audioPath + "**")
+                .addResourceLocations("file:" + audioCatalog);
     }
 }

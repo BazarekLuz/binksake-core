@@ -15,8 +15,6 @@ import java.util.List;
 public class AlbumService {
     private final AlbumRepository albumRepository;
     private final AutoMapper autoMapper;
-    @Value("${app.file.music-file.path}")
-    private String path;
 
     AlbumDTO fetchAlbumDetails(Long id) {
         return autoMapper.mapToAlbumDTO(albumRepository.findById(id)

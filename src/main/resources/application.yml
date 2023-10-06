@@ -1,4 +1,7 @@
 spring:
+  mvc:
+    async:
+      request-timeout: 3600000
   datasource:
     url: jdbc:postgresql://localhost:5432/binksake
     username: postgres
@@ -24,9 +27,10 @@ app:
   jwt:
     secret: GaeuRaXZsiTHMXFTvA0INIVh7oaFxQBifdBg4rAs0fG
   file:
-    music-file:
-      path: music-upload
     img:
       path: images/
       catalog: images/
+    audio:
+      path: music-upload/
+      catalog: music-upload/
   frontUrl: http://localhost:4200/
