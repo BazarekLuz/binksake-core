@@ -1,17 +1,17 @@
 package eng.core.binksake.audio;
 
+import org.apache.coyote.Response;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
+import javax.print.attribute.standard.Media;
+import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
@@ -23,12 +23,33 @@ public class AudioController {
 
    public static final int BYTE_RANGE = 128;
 
-   @GetMapping("/{filename}")
-    public Mono<ResponseEntity<byte[]>> streamAudio(
-           @RequestHeader(value="Range", required = false) String httpRangeList,
-           @PathVariable String filename) {
-       return Mono.just(getContent(AUDIO_PATH, filename, httpRangeList, "audio"));
-   }
+//   @GetMapping("/{filename}")
+//    public Mono<ResponseEntity<byte[]>> streamAudio(
+//           @RequestHeader(value="Range", required = false) String httpRangeList,
+//           @PathVariable String filename) {
+//       return Mono.just(getContent(AUDIO_PATH, filename, httpRangeList, "audio"));
+//   }
+    @GetMapping("/{filename}")
+    private ResponseEntity<byte[]> getAudioFile(@PathVariable String filename) {
+        String path = AUDIO_PATH + "/" + filename;
+
+        File file = new File(path);
+
+        if (!file.exists()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        try (FileInputStream fileInputStream = new FileInputStream(file)) {
+            byte[] audioData = StreamUtils.copyToByteArray(fileInputStream);
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            headers.setContentDispositionFormData(filename, filename);
+
+            return new ResponseEntity<>(audioData, headers, HttpStatus.OK);
+        } catch (IOException e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
    private ResponseEntity<byte[]> getContent(String location,
                                              String fileName,

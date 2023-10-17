@@ -33,4 +33,5 @@ app:
     audio:
       path: music-upload/
       catalog: music-upload/
+      service-path: music-upload
   frontUrl: http://localhost:4200/

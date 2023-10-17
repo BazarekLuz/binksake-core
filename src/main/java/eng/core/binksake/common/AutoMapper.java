@@ -35,7 +35,10 @@ public class AutoMapper {
         return SongDTO.builder()
                 .name(song.getName())
                 .path(song.getPath())
-                .artistDTOs(song.getArtistList().stream()
+                .duration(song.getDuration())
+                .albumId(song.getAlbumId().getId())
+                .albumCoverUrl(song.getAlbumCoverUrl())
+                .artistDTOs(song.getArtists().stream()
                         .map(this::mapToArtistDTO)
                         .collect(Collectors.toList()))
                 .build();

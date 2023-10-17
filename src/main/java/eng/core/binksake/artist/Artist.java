@@ -5,8 +5,8 @@ import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,9 +17,10 @@ public class Artist {
     private String name;
     @Nullable
     private String basicInfo;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    @JoinTable(name="artist_album",
-    joinColumns = @JoinColumn(name = "artist_id", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"))
-    private Set<Album> albumSet = new HashSet<>();
+    @ManyToMany(cascade = {CascadeType.REMOVE}, mappedBy = "artists")
+    private List<Album> albums = new ArrayList<>();
+
+    public void addAlbum(Album album) {
+        this.getAlbums().add(album);
+    }
 }
