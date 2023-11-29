@@ -4,6 +4,8 @@ import eng.core.binksake.album.Album;
 import eng.core.binksake.album.AlbumDTO;
 import eng.core.binksake.artist.Artist;
 import eng.core.binksake.artist.ArtistDTO;
+import eng.core.binksake.playlist.Playlist;
+import eng.core.binksake.playlist.PlaylistDTO;
 import eng.core.binksake.song.Song;
 import eng.core.binksake.song.SongDTO;
 import eng.core.binksake.user.User;
@@ -42,5 +44,9 @@ public class AutoMapper {
                         .map(this::mapToArtistDTO)
                         .collect(Collectors.toList()))
                 .build();
+    }
+
+    public PlaylistDTO mapToPlaylistDTO(Playlist playlist) {
+        return modelMapper.map(playlist, PlaylistDTO.class);
     }
 }

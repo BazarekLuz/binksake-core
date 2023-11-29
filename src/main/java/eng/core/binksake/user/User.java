@@ -1,5 +1,6 @@
 package eng.core.binksake.user;
 
+import eng.core.binksake.playlist.Playlist;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data
@@ -26,6 +28,9 @@ public class User implements UserDetails {
     private String password;
     private String profilePictureUrl;
     private LocalDateTime activationTime;
+
+    @OneToMany(mappedBy = "ownerId")
+    private List<Playlist> playlists;
 
 //    @Enumerated(EnumType.STRING)
 //    private Role role;

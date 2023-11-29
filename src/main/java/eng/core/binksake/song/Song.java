@@ -2,6 +2,7 @@ package eng.core.binksake.song;
 
 import eng.core.binksake.album.Album;
 import eng.core.binksake.artist.Artist;
+import eng.core.binksake.playlist.Playlist;
 import jakarta.persistence.*;
 import lombok.Data;
 

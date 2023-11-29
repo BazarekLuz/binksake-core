@@ -12,4 +12,6 @@ public class ErrorMessages {
     public static final String NOT_AUTHENTICATED = "api.error.NOT_AUTHENTICATED";
     public static final String ARTIST_NOT_FOUND = "api.error.ARTIST_NOT_FOUND";
     public static final String ALBUM_NOT_FOUND = "api.error.ALBUM_NOT_FOUND";
+    public static final String PLAYLIST_NOT_FOUND = "api.error.PLAYLIST_NOT_FOUND";
+    public static final String SONG_NOT_FOUND = "api.error.SONG_NOT_FOUND";
 }

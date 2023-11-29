@@ -1,4 +1,4 @@
-INSERT INTO artist (name, basic_info) VALUES ('Foster The People', null);
+INSERT INTO artist (name, basic_info, img_url) VALUES ('Foster The People', null, '1-profile-image.jpg');
 INSERT INTO album (date_created, img_url, name) VALUES ('2014-03-14', '1/cover.jpg', 'Supermodel');
 INSERT INTO song (album_id, name, path, duration, album_cover_url) VALUES
                                                 (1, 'Are You What You Want To Be', '1/AreYouWhatYouWantToBe.mp3', '00:04:30', '1/cover.jpg'),
@@ -27,7 +27,7 @@ INSERT INTO song_artist (artist_id, song_id) VALUES (1, 1),
                                                     (1, 11),
                                                     (1, 12);
 
-INSERT INTO artist (name, basic_info) VALUES ('Travis Scott', null);
+INSERT INTO artist (name, basic_info, img_url) VALUES ('Travis Scott', null, '2-profile-image.png');
 INSERT INTO album (date_created, img_url, name) VALUES ('2015-09-04', '2/cover.png', 'Rodeo');
 INSERT INTO song (album_id, name, path, duration, album_cover_url) VALUES
                                                   (2, 'Pornography', '2/Pornography.mp3', '00:03:51', '2/cover.png'),
@@ -59,3 +59,10 @@ INSERT INTO song_artist (artist_id, song_id) VALUES (2, 13),
                                                     (2, 24),
                                                     (2, 25),
                                                     (2, 26);
+INSERT INTO users (activation_time, email, name, password, profile_picture_url) VALUES ('2023-11-13 17:31:00', 'm@mati.com', 'mati', 'test123', null),
+                                                                                       ('2023-11-13 17:31:00', 'm@mati2.com', 'mati2', 'test1234', null);
+INSERT INTO playlist (date_created, owner_id) VALUES ('2023-11-13', 1),
+                                                     ('2023-11-12', 2);
+INSERT INTO playlist_song (playlist_id, song_id) VALUES (1, 12),
+                                                        (1, 13),
+                                                        (1, 26);

@@ -17,6 +17,8 @@ public class Artist {
     private String name;
     @Nullable
     private String basicInfo;
+    @Nullable
+    private String imgUrl;
     @ManyToMany(cascade = {CascadeType.REMOVE}, mappedBy = "artists")
     private List<Album> albums = new ArrayList<>();
 

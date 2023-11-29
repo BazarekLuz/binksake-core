@@ -13,7 +13,9 @@ public class ExceptionHandler {
             EmailAlreadyExistsException.class,
             ArtistNotFoundException.class,
             AlbumNotFoundException.class,
-            NameAlreadyExistsException.class
+            NameAlreadyExistsException.class,
+            PlaylistNotFoundException.class,
+            SongNotFoundException.class
     })
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorMessageDTO handleExceptions(Exception e) {
