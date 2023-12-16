@@ -37,16 +37,4 @@ public class AlbumService {
                 .map(autoMapper::mapToSongDTO)
                 .toList();
     }
-
-    //todo get more information on how to implement this
-//    public void addAlbum(Album album) throws UnsupportedTagException, InvalidDataException, IOException {
-//        List<Song> songList = album.getSongList();
-//        Song song1 = songList.get(0);
-//        System.out.println(path);
-//        Mp3File file = new Mp3File(path + "/" + song1.getPath());
-//        if (file.hasId3v1Tag()) {
-//            ID3v1 tag = file.getId3v1Tag();
-//            System.out.println(tag.getAlbum() + "\n" + tag.getArtist());
-//        }
-//    }
 }

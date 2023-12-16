@@ -8,12 +8,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
     private final AutoMapper autoMapper;
     private final PasswordEncoder passwordEncoder;
+
 
     void register(RegisterUserDTO registerUserDTO) {
         userRepository.findByEmail(registerUserDTO.getEmail()).ifPresent(user -> {
@@ -34,5 +37,13 @@ public class UserService {
     UserDTO findUserById(Long id) {
         return autoMapper.mapToUserDTO(userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new));
+    }
+
+    List<UserDTO> findFriendsByUserId(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(UserNotFoundException::new);
+        return user.getFriends().stream()
+                .map(autoMapper::mapToUserDTO)
+                .toList();
     }
 }

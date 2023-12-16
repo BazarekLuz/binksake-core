@@ -28,9 +28,10 @@ public class User implements UserDetails {
     private String password;
     private String profilePictureUrl;
     private LocalDateTime activationTime;
-
     @OneToMany(mappedBy = "ownerId")
     private List<Playlist> playlists;
+    @ManyToMany
+    private List<User> friends;
 
 //    @Enumerated(EnumType.STRING)
 //    private Role role;

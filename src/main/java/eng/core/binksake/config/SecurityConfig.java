@@ -43,6 +43,7 @@ public class SecurityConfig implements WebMvcConfigurer {
                 .requestMatchers(new AntPathRequestMatcher("/api/albums/**")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/api/audio")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/api/playlists")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/api/search")).permitAll()
                 .anyRequest().permitAll()).headers().frameOptions().disable();
 
         http.sessionManagement(session ->
