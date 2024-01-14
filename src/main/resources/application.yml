@@ -31,6 +31,7 @@ app:
       path: images/
       catalog: images/
     audio:
+      song-path: localhost:8080/music-upload/
       path: music-upload/
       catalog: music-upload/
       service-path: music-upload

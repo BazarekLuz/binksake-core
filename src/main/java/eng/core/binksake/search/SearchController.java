@@ -3,6 +3,7 @@ package eng.core.binksake.search;
 import eng.core.binksake.album.SearchAlbumDTO;
 import eng.core.binksake.artist.ArtistDTO;
 import eng.core.binksake.song.SearchSongDTO;
+import eng.core.binksake.song.SongDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,7 @@ public class SearchController {
     private final SearchService searchService;
 
     @GetMapping("songs")
-    private ResponseEntity<List<SearchSongDTO>> getSongsByPhrase(
+    private ResponseEntity<List<SongDTO>> getSongsByPhrase(
             @RequestParam(name = "phrase") String phrase) {
         return ResponseEntity.ok(searchService.findSongsByPhrase("%" + phrase + "%"));
     }

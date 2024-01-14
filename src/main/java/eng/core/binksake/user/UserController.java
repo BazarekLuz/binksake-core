@@ -24,8 +24,8 @@ public class UserController {
         return ResponseEntity.ok(userService.findUserById(id));
     }
 
-    @GetMapping("/{id}/friends")
-    private ResponseEntity<List<UserDTO>> getFriendsByUserId(@PathVariable Long id) {
-        return ResponseEntity.ok(userService.findFriendsByUserId(id));
-    }
+//    @GetMapping("/{id}/friends")
+//    private ResponseEntity<List<UserDTO>> getFriendsByUserId(@PathVariable Long id) {
+//        return ResponseEntity.ok(userService.findFriendsByUserId(id));
+//    }
 }

@@ -30,8 +30,8 @@ public class User implements UserDetails {
     private LocalDateTime activationTime;
     @OneToMany(mappedBy = "ownerId")
     private List<Playlist> playlists;
-    @ManyToMany
-    private List<User> friends;
+//    @ManyToMany
+//    private List<User> friends;
 
 //    @Enumerated(EnumType.STRING)
 //    private Role role;

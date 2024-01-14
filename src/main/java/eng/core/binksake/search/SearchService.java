@@ -7,6 +7,7 @@ import eng.core.binksake.artist.ArtistRepository;
 import eng.core.binksake.common.AutoMapper;
 import eng.core.binksake.common.exception.ArtistNotFoundException;
 import eng.core.binksake.song.SearchSongDTO;
+import eng.core.binksake.song.SongDTO;
 import eng.core.binksake.song.SongRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,15 +26,16 @@ public class SearchService {
     private final SongRepository songRepository;
     private final AutoMapper autoMapper;
 
-    List<SearchSongDTO> findSongsByPhrase(String phrase) {
+    List<SongDTO> findSongsByPhrase(String phrase) {
         return songRepository.findSongsByPhrase(phrase).stream()
-                .map(song -> new SearchSongDTO(
-                        song.get(0, String.class),
+                .map(song -> new SongDTO(
+                        song.get(0, Long.class),
                         song.get(1, String.class),
-                        song.get(2, Time.class),
-                        song.get(3, String.class),
-                        song.get(4, Long.class),
-                        convertToArtistDTOList(song.get(5, Long[].class))))
+                        song.get(2, String.class),
+                        song.get(3, Time.class).toLocalTime(),
+                        song.get(4, String.class),
+                        song.get(5, Long.class),
+                        convertToArtistDTOList(song.get(6, Long[].class))))
                 .collect(Collectors.toList());
     }
 

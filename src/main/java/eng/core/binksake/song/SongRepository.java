@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface SongRepository extends CrudRepository<Song, Long> {
     @Query(value = """
-            SELECT s.NAME, s.PATH, s.DURATION, s.ALBUM_COVER_URL, s.ALBUM_ID, ARRAY_AGG(sa.ARTIST_ID) AS ARTIST_IDS
+            SELECT s.ID, s.NAME, s.PATH, s.DURATION, s.ALBUM_COVER_URL, s.ALBUM_ID, ARRAY_AGG(sa.ARTIST_ID) AS ARTIST_IDS
             FROM SONG s
             JOIN SONG_ARTIST sa ON s.ID = sa.SONG_ID
             WHERE REPLACE(LOWER(NAME), ' ', '') LIKE REPLACE(LOWER(:phrase), ' ', '')

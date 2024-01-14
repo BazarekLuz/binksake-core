@@ -1,3 +1,2 @@
 # binksake-core
-Aplikacja klon Spotify - serwis do strumieniowania muzyki
-Część serverowa aplikacji mojej pracy inżynierskiej
+Part of my thesis, API for music streaming application

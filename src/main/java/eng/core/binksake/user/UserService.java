@@ -39,11 +39,11 @@ public class UserService {
                 .orElseThrow(UserNotFoundException::new));
     }
 
-    List<UserDTO> findFriendsByUserId(Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(UserNotFoundException::new);
-        return user.getFriends().stream()
-                .map(autoMapper::mapToUserDTO)
-                .toList();
-    }
+//    List<UserDTO> findFriendsByUserId(Long id) {
+//        User user = userRepository.findById(id)
+//                .orElseThrow(UserNotFoundException::new);
+//        return user.getFriends().stream()
+//                .map(autoMapper::mapToUserDTO)
+//                .toList();
+//    }
 }

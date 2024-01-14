@@ -35,6 +35,7 @@ public class AutoMapper {
 
     public SongDTO mapToSongDTO(Song song) {
         return SongDTO.builder()
+                .id(song.getId())
                 .name(song.getName())
                 .path(song.getPath())
                 .duration(song.getDuration())
